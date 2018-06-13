@@ -1,0 +1,82 @@
+<div class="mb-3">
+	<button class="btn btn-sm btn-primary" ng-click="saveCliente()"><i class="fas fa-save mr-2" aria-hidden="true"></i>Salva</button>
+	<button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt mr-2" aria-hidden="true"></i>Elimina</button>
+	<button class="btn btn-sm btn-warning" ng-click="undo()"><i class="fa fa-undo mr-2" aria-hidden="true"></i>Annulla</button>
+</div>
+<form class="mt-5">
+	<div class="form-row">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="cognome" class="form-control" ng-model="cliente.cognome" autocomplete="off" required>
+				<label class="form-control-placeholder" for="cognome">Cognome</label>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="nome" class="form-control" ng-model="cliente.nome" autocomplete="off" required>
+				<label class="form-control-placeholder" for="nome">Nome</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="data_nascita" class="form-control" ng-model="cliente.data_nascita" autocomplete="off" required>
+				<label class="form-control-placeholder" for="data_nascita">Data di nascita</label>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="codice_fiscale" class="form-control" ng-model="cliente.codice_fiscale" autocomplete="off" required>
+				<label class="form-control-placeholder" for="codice_fiscale">Codice fiscale</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="indirizzo" class="form-control" ng-model="cliente.indirizzo.indirizzo" autocomplete="off" required>
+				<label class="form-control-placeholder" for="indirizzo">Indirizzo</label>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="civico" class="form-control" ng-model="cliente.indirizzo.civico" autocomplete="off" required>
+				<label class="form-control-placeholder" for="civico">Civico</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="telefono" class="form-control" ng-model="cliente.contatto.telefono" autocomplete="off" required>
+				<label class="form-control-placeholder" for="telefono">Telefono</label>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="cellulare" class="form-control" ng-model="cliente.contatto.cellulare" autocomplete="off" required>
+				<label class="form-control-placeholder" for="cellulare">Cellulare</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="email" class="form-control" ng-model="cliente.contatto.email" autocomplete="off" required>
+				<label class="form-control-placeholder" for="email">Email</label>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="form-group">
+				<input type="text" id="pec" class="form-control" ng-model="cliente.contatto.pec" autocomplete="off" required>
+				<label class="form-control-placeholder" for="pec">Pec</label>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+
+
+

@@ -1,0 +1,21 @@
+<button type="button" class="btn btn-sm btn-primary" ng-click="addCliente()"><i class="fas fa-plus mr-2" aria-hidden="true"></i>Aggiungi</button>
+<div class="table-responsive mt-4">
+	<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col" width="20%">Cognome</th>
+			<th scope="col" width="20%">Nome</th>
+			<th scope="col" width="15%">Data di nascita</th>
+			<th scope="col">Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="cliente in clienti" ng-click="editCliente(cliente)">
+			<td>{{ cliente.cognome }}</td>
+			<td>{{ cliente.nome }}</td>
+			<td>{{ cliente.data_nascita }}</td>
+			<td>{{ cliente.contatto.email }}</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
