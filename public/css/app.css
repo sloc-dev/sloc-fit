@@ -2,7 +2,7 @@
 
 .bg-primary{background-color:#007bff!important}
 
-#sideNav { text-align: left; background-image: url('img/sidebar-background.jpg'); }
+#sideNav { text-align: left; background-image: url('/img/sidebar-background.jpg'); }
 #sideNav .navbar-brand { margin: 0; }
 
 .btn-facebook, .btn-google, .btn-facebook:hover, .btn-google:hover {
