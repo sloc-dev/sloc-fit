@@ -1,14 +1,16 @@
 app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, $http, UtilsSvc) {
+	
 	$scope.page = 'list';
+	$scope.clienti = [];
+	$scope.clienti_last = [];
 	var cliente_backup = null;
 	
 	$scope.loadClienti = function(){
 		$http.get('/api/clienti')
 		.success(function (data, status, headers, config) {
 			$scope.clienti = data.data.clienti;
-			console.log(angular.toJson($scope.clienti));
 		}).error(function (data, status, headers, config) {
-			
+			UtilsSvc.notifyError(data.response);
 		});
 	};
 	
@@ -17,7 +19,7 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 		.success(function (data, status, headers, config) {
 			$scope.clienti_last = data.data.clienti;
 		}).error(function (data, status, headers, config) {
-			
+			UtilsSvc.notifyError(data.response);
 		});
 	};
 	
@@ -52,4 +54,6 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 
 	
 	$scope.loadClienti();
+	$scope.loadUltimiClienti();
+	
 }]);
