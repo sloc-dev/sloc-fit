@@ -20,6 +20,16 @@ class ClienteController extends JsonController
 		}
     }
 	
+	public function getLasts($limit = 5)
+    {
+		$palestra = PalestraModel::getCurrent();
+		if ($palestra !== null){
+			return $this->responseSuccess(['clienti' => ClienteModel::getLasts($palestra, $limit)]);
+		} else {
+			return $this->responseBadRequest();
+		}
+    }
+	
 	public function postSave(Request $request)
     {
 		$palestra = PalestraModel::getCurrent();

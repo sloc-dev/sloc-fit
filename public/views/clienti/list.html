@@ -7,9 +7,9 @@
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item" style="border: none;"><input type="text" class="form-control" placeholder="Cerca un cliente"></li>
-				<li class="list-group-item" style="border: none;">Cras justo odio</li>
-				<li class="list-group-item" style="border: none;">Dapibus ac facilisis in</li>
-				<li class="list-group-item" style="border: none;">Vestibulum at eros</li>
+				<li class="list-group-item" style="border: none;" ng-repeat="cliente in clienti_last">
+					<a ng-click="editCliente(cliente)">{{ cliente.cognome }} {{ cleinte.nome }}</a>
+				</li>
 			</ul>
 		</div>
 	</div>

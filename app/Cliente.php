@@ -16,6 +16,10 @@ class Cliente extends Model
 		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'desc')->get();
 	}
 	
+	public static function getLasts(Palestra $palestra, $limit){
+		return self::where('id_palestra', $palestra->id)->orderBy('created_at', 'desc')->take($limit)->get();
+	}
+	
 	public function getDataNascitaAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('d/m/Y');
