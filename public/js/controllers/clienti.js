@@ -32,8 +32,6 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 	$scope.saveCliente = function(){
 		$http.post('/api/cliente/save', $scope.cliente)
 		.success(function (data, status, headers, config) {
-          	var index = $scope.clienti.indexOf($scope.cliente);
-			//$scope.clienti[index].id = data.data.id;
 			$scope.cliente.id = data.data.id;
           	$scope.cliente = null;
           	$scope.page = 'list';
@@ -42,6 +40,19 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 			UtilsSvc.notifyError(data.response);
 		});
 	};
+  
+  	$scope.deleteCliente = function(){
+		 $http.post('/api/cliente/delete/' + $scope.cliente.id)
+		.success(function (data, status, headers, config) {
+          	var index = $scope.clienti.indexOf($scope.cliente);
+			$scope.clienti.splice(index, 1);
+          	$scope.cliente = null;
+          	$scope.page = 'list';
+			UtilsSvc.notifySuccess(data.response);
+		}).error(function (data, status, headers, config) {
+			UtilsSvc.notifyError(data.response);
+		});
+    }
 	
 	$scope.editCliente = function(cliente){
 		$scope.cliente = cliente;
