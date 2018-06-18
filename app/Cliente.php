@@ -51,7 +51,7 @@ class Cliente extends Model
 
     public function contatto()
     {
-        return $this->hasOne('App\Contatto', 'id_contatto', 'id');
+        return $this->hasOne('App\Contatto', 'id', 'id_contatto');
     }
   
   public function indirizzo()
