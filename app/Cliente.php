@@ -13,7 +13,7 @@ class Cliente extends Model
     protected $table = 'cliente';	
 	protected $fillable = ['nome', 'cognome', 'codice_fiscale', 'data_nascita'];	
 	protected $hidden = ['id_palestra', 'id_indirizzo', 'id_contatto', 'created_at', 'updated_at', 'deleted_at'];
-	protected $appends = ['indirizzo', 'contatto'];
+	// protected $appends = ['indirizzo', 'contatto'];
 	
 	public static function getAll(Palestra $palestra){
 		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'asc')->get();
@@ -48,6 +48,16 @@ class Cliente extends Model
 	{
 		return Contatto::find($this->attributes['id_contatto']);
 	}
+
+    public function contatto()
+    {
+        return $this->hasOne('App\Contatto', 'id_contatto');
+    }
+  
+  public function indirizzo()
+    {
+        return $this->hasOne('App\Indirizzo', 'id_indirizzo');
+    }
 	
 	public static function store(Palestra $palestra, Request $request)
 	{
@@ -78,25 +88,20 @@ class Cliente extends Model
   
   	public static function deleteById(Palestra $palestra, int $id)
     {
+      $b = false;
      	$cliente = self::find($id); 
       	if ($cliente !== null){
           if ($cliente->id_palestra === $palestra->id){
-            $contatto = Contatto::find($cliente->id_contatto);
-            $indirizzo = Contatto::find($cliente->id_indirizzo);
-            
-            if ($contatto !== null){
-            	$contatto->delete();
-            }
-            if ($indirizzo !== null){
-            	$indirizzo->delete();
-            }
-            
-            $cliente->delete();
+			$this->contatto()->delete();
+            $this->indirizzo()->delete();
+   			$b = parent::delete();
           } else {
           	throw new \LogicException("Cliente non trovato (cod. 2)");
           }
         } else {
         	throw new \LogicException("Cliente non trovato (cod. 1)");
         }
+      
+      return $b;
     }
 }
