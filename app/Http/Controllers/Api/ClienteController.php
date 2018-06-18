@@ -56,7 +56,7 @@ class ClienteController extends JsonController
       try {
 		$palestra = PalestraModel::getCurrent();
 		if ($palestra !== null){
-          	ClienteModel::deleteById($id, $palestra)
+          	ClienteModel::deleteById($id, $palestra);
 			return $this->responseSuccess([], 'Eliminato');
 		} else {
 			return $this->responseBadRequest();
