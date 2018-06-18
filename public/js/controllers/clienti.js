@@ -33,8 +33,9 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 		$http.post('/api/cliente/save', $scope.cliente)
 		.success(function (data, status, headers, config) {
           	var index = $scope.clienti.indexOf($scope.cliente);
-			$scope.clienti[index].id = data.data.id;
-			$scope.cliente = null;
+			//$scope.clienti[index].id = data.data.id;
+			$scope.cliente.id = data.data.id;
+          	$scope.cliente = null;
           	$scope.page = 'list';
 			UtilsSvc.notifySuccess(data.response);
 		}).error(function (data, status, headers, config) {
