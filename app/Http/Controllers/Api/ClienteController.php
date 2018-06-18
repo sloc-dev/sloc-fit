@@ -19,6 +19,16 @@ class ClienteController extends JsonController
 			return $this->responseBadRequest();
 		}
     }
+  
+  	public function getCount()
+    {
+		$palestra = PalestraModel::getCurrent();
+		if ($palestra !== null){
+			return $this->responseSuccess(['count' => ClienteModel::countAll($palestra)]);
+		} else {
+			return $this->responseBadRequest();
+		}
+    }
 	
 	public function getLasts($limit = 5)
     {
