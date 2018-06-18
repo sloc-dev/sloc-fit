@@ -44,8 +44,8 @@ class ClienteController extends JsonController
     {
 		$palestra = PalestraModel::getCurrent();
 		if ($palestra !== null){
-			ClienteModel::store($palestra, $request);
-			return $this->responseSuccess([], 'Salvato');
+			$cliente = ClienteModel::store($palestra, $request);
+			return $this->responseSuccess(['id' => $cliente->id], 'Salvato');
 		} else {
 			return $this->responseBadRequest();
 		}
