@@ -15,6 +15,10 @@ class Cliente extends Model
 	public static function getAll(Palestra $palestra){
 		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'desc')->get();
 	}
+  
+  	public static function countAll(Palestra $palestra){
+		return self::where('id_palestra', $palestra->id)->count();
+	}
 	
 	public static function getLasts(Palestra $palestra, $limit){
 		return self::where('id_palestra', $palestra->id)->orderBy('created_at', 'desc')->take($limit)->get();
