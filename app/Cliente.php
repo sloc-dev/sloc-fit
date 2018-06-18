@@ -78,7 +78,7 @@ class Cliente extends Model
   
   	public static function deleteById(int $id)
     {
-     	$cliente = self::find($request->id); 
+     	$cliente = self::find($id); 
       	if ($cliente !== null){
           if ($cliente->id_palestra === $palestra->id){
             $contatto = Contatto::find($cliente->id_contatto);
