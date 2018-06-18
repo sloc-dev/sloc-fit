@@ -32,7 +32,7 @@ app.controller('ClientiCtrl', ['$scope', '$http', 'UtilsSvc', function ($scope, 
 	$scope.saveCliente = function(){
 		$http.post('/api/cliente/save', $scope.cliente)
 		.success(function (data, status, headers, config) {
-          	var index = $scope.gridOptions.data.indexOf($scope.assenza);
+          	var index = $scope.clienti.indexOf($scope.cliente);
 			$scope.clienti[index].id = data.data.id;
 			$scope.cliente = null;
 			UtilsSvc.notifySuccess(data.response);
