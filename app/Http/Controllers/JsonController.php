@@ -14,5 +14,10 @@ class JsonController extends Controller
 	{
 		return response()->json(['code' => 400, 'response' => $response_msg], 400);
 	}
+  
+  	public function responseInternalError($response_msg = 'Errore interno')
+	{
+		return response()->json(['code' => 500, 'response' => $response_msg], 500);
+	}
 	
 }
