@@ -13,7 +13,7 @@ class Cliente extends Model
     protected $table = 'cliente';	
 	protected $fillable = ['nome', 'cognome', 'codice_fiscale', 'data_nascita'];	
 	protected $hidden = ['id_palestra', 'id_indirizzo', 'id_contatto', 'created_at', 'updated_at', 'deleted_at'];
-	// protected $appends = ['indirizzo', 'contatto'];
+	protected $appends = ['indirizzo', 'contatto'];
 	
 	public static function getAll(Palestra $palestra){
 		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'asc')->get();
