@@ -13,7 +13,7 @@ class Cliente extends Model
 	protected $appends = ['indirizzo', 'contatto'];
 	
 	public static function getAll(Palestra $palestra){
-		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'desc')->get();
+		return self::where('id_palestra', $palestra->id)->orderBy('cognome', 'asc')->get();
 	}
   
   	public static function countAll(Palestra $palestra){
