@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class Cliente extends Model
 {
+  	use SoftDeletes;
+  
     protected $table = 'cliente';	
 	protected $fillable = ['nome', 'cognome', 'codice_fiscale', 'data_nascita'];	
 	protected $hidden = ['id_palestra', 'id_indirizzo', 'id_contatto', 'created_at', 'updated_at', 'deleted_at'];
@@ -72,4 +75,26 @@ class Cliente extends Model
 		
 		return $cliente;
 	}
+  
+  	public static function deleteById(int $id)
+    {
+     	$cliente = self::find($request->id); 
+      	if ($cliente !== null){
+          if ($cliente->id_palestra === $palestra->id){
+            $contatto = Contatto::find($cliente->id_contatto);
+            $indirizzo = Contatto::find($cliente->id_indirizzo);
+            $cliente->delete();
+            if ($contatto !== null){
+            	$contatto->delete();
+            }
+            if ($indirizzo !== null){
+            	$indirizzo->delete();
+            }
+          } else {
+          	throw new \LogicException("Cliente non trovato (cod. 2)");
+          }
+        } else {
+        	throw new \LogicException("Cliente non trovato (cod. 1)");
+        }
+    }
 }
