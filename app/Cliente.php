@@ -76,7 +76,7 @@ class Cliente extends Model
 		return $cliente;
 	}
   
-  	public static function deleteById(int $id)
+  	public static function deleteById(Palestra $palestra, int $id)
     {
      	$cliente = self::find($id); 
       	if ($cliente !== null){
