@@ -64,7 +64,7 @@ class ClienteController extends JsonController
       } catch (\LogicException $e){
           return $this->responseBadRequest($e->getMessage());
       } catch (\Exception $e){
-          return $this->responseInternalError();
+          return $this->responseInternalError($e->getMessage());
       }
     }
 
