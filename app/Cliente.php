@@ -51,12 +51,12 @@ class Cliente extends Model
 
     public function contatto()
     {
-        return $this->hasOne('App\Contatto', 'id_contatto');
+        return $this->hasOne('App\Contatto', 'id_contatto', 'id');
     }
   
   public function indirizzo()
     {
-        return $this->hasOne('App\Indirizzo', 'id_indirizzo');
+        return $this->hasOne('App\Indirizzo', 'id_indirizzo', 'id');
     }
 	
 	public static function store(Palestra $palestra, Request $request)
