@@ -50,5 +50,21 @@ class ClienteController extends JsonController
 			return $this->responseBadRequest();
 		}
     }
+  
+  	public function postDelete($id)
+    {
+      try {
+		$palestra = PalestraModel::getCurrent();
+		if ($palestra !== null){
+          	ClienteModel::deleteById($id, $palestra)
+			return $this->responseSuccess([], 'Eliminato');
+		} else {
+			return $this->responseBadRequest();
+		}
+    } catch (\LogicException $e){
+     	return $this->responseBadRequest($e->getMessage());
+    } catch (\Exception $e){
+     	return $this->responseInternalError();
+    }
 
 }
