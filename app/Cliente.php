@@ -83,13 +83,15 @@ class Cliente extends Model
           if ($cliente->id_palestra === $palestra->id){
             $contatto = Contatto::find($cliente->id_contatto);
             $indirizzo = Contatto::find($cliente->id_indirizzo);
-            $cliente->delete();
+            
             if ($contatto !== null){
             	$contatto->delete();
             }
             if ($indirizzo !== null){
             	$indirizzo->delete();
             }
+            
+            $cliente->delete();
           } else {
           	throw new \LogicException("Cliente non trovato (cod. 2)");
           }
