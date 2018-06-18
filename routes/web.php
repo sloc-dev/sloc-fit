@@ -22,5 +22,6 @@ Route::get('/', function () {
 });
 
 Route::get('/api/clienti', 'Api\ClienteController@getAll');
+Route::get('/api/clienti/count', 'Api\ClienteController@getCount');
 Route::get('/api/clienti/lasts/{limit?}', 'Api\ClienteController@getLasts');
 Route::post('/api/cliente/save', 'Api\ClienteController@postSave');
